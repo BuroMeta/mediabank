@@ -1,0 +1,31 @@
+{
+    "name": "picturae/mediabank",
+    "description": "Picturae webkitchen mediabank",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Picturae",
+            "email": "info@picturae.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Picturae\\Mediabank\\": "src/"
+        }
+    },
+     "autoload-dev": {
+        "psr-4": { 
+            "Test\\Picturae\\Mediabank\\": "tests/" 
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "^2.3",
+        "phpmd/phpmd": "^2.2",
+        "satooshi/php-coveralls": "^0.6.1"
+    }
+}

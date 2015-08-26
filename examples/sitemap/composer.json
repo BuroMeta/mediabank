@@ -1,0 +1,22 @@
+{
+    "name": "picturae/sitemap",
+    "description": "Picturae webkitchen mediabank sitemap example",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Picturae",
+            "email": "info@picturae.nl"
+        }
+    ],
+    "repositories": [
+        {
+            "url": "https://github.com/picturae/mediabank.git",
+            "type": "git"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "picturae/mediabank": "dev-develop",
+        "thepixeldeveloper/sitemap": "^3.0"
+    }
+}

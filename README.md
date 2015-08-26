@@ -28,9 +28,10 @@ See below the code example for the client
 $client = new \Picturae\Mediabank\Client('api-key');
 
 // Get a record
-$deed = $client->getMedia($id);
+$media = $client->getMedia($id);
 
 // Get a result list
+// all parameters are optional
 $result = $client->search([
     'q' => 'something', // search query
     'rows' => 100,      // amount of rows to return
@@ -43,30 +44,31 @@ $result = $client->search([
     ],
     'sort' => 'search_s_place asc'   // sort result set (default by relevance)
 ]);
+
 ```
 
 ### Serverside fallback ###
 
-[Full example](examples/serverside-fallback)
+[Full example](examples/serverside-fallback/)
 
 ```php
 // If you do not provide a url the current url is used
 $url = new \Picturae\Mediabank\URL();
 
-// Check if we are on a permalink of a deed
-if ($url->isDeedDetail()) {
+// Check if we are on a permalink
+if ($url->isDetail()) {
     
-    // Get the id for the deed from the URL
-    $id = $url->getDeedUUID();
+    // Get the id for the record from the URL
+    $id = $url->getUUID();
 
     // Instantiate the client with your API key
     $client = new \Picturae\Mediabank\Client('api-key');
 
-    // Fetch the deed
-    $deed = $client->getDeed($id);
+    // Fetch the record
+    $media = $client->getMedia($id);
 
-    // Check if the deed is returned
-    if (!empty($deed) {
+    // Check if the record is returned
+    if (!empty($media) {
         
         // Add your logic for the fallback
         // e.g add opengraph tags for facebook / twitter
@@ -74,12 +76,8 @@ if ($url->isDeedDetail()) {
 
     }
 }
-
 ```
 
 ### Sitemap ###
 
-It's recommended to create a sitemap and submit it to google to improve crawling
-In the examples folder is a demo how you could implement this.
-
-[Full example](examples/sitemap)
+For an example how to implement a sitemap to improve discoverability for search engines look at the [sitemap example](examples/sitemap/)

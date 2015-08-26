@@ -2,12 +2,12 @@
 [![Coverage Status](https://coveralls.io/repos/picturae/mediabank/badge.svg?branch=master&service=github)](https://coveralls.io/github/picturae/mediabank?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/55ddbeb68d9c4b00180009fd/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55ddbeb68d9c4b00180009fd)
 
-# Picturae webkitchen genealogy client #
+# Picturae webkitchen mediabank client #
 
 ## Introduction ##
 
-The genealogy client library is released for third parties who want to integrate
-a serverside fallback for the genealogy component.
+The mediabank client library is released for third parties who want to integrate
+a serverside fallback for the mediabank component.
 This can be used to improve SEO ranking (or) and sharing on social networks as facebook, twitter
 which do not support javascript.
 
@@ -17,7 +17,7 @@ implementation in other languages as Javascript / C# / Java etc.
 ## Installation ##
 
 ```
-composer require picturae/genealogy
+composer require picturae/mediabank
 ```
 
 ## Usage ##
@@ -25,7 +25,7 @@ composer require picturae/genealogy
 See below the code example for the client
 
 ```php
-$client = new \Picturae\Genealogy\Client('api-key');
+$client = new \Picturae\Mediabank\Client('api-key');
 
 // Get a record
 $media = $client->getMedia($id);
@@ -53,22 +53,22 @@ $result = $client->search([
 
 ```php
 // If you do not provide a url the current url is used
-$url = new \Picturae\Genealogy\URL();
+$url = new \Picturae\Mediabank\URL();
 
-// Check if we are on a permalink of a deed
-if ($url->isDeedDetail()) {
+// Check if we are on a permalink
+if ($url->isDetail()) {
     
-    // Get the id for the deed from the URL
-    $id = $url->getDeedUUID();
+    // Get the id for the record from the URL
+    $id = $url->getUUID();
 
     // Instantiate the client with your API key
-    $client = new \Picturae\Genealogy\Client('api-key');
+    $client = new \Picturae\Mediabank\Client('api-key');
 
-    // Fetch the deed
-    $deed = $client->getDeed($id);
+    // Fetch the record
+    $media = $client->getMedia($id);
 
-    // Check if the deed is returned
-    if (!empty($deed) {
+    // Check if the record is returned
+    if (!empty($media) {
         
         // Add your logic for the fallback
         // e.g add opengraph tags for facebook / twitter

@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/picturae/mediabank.svg?branch=master)](https://travis-ci.org/picturae/mediabank)
 [![Coverage Status](https://coveralls.io/repos/picturae/mediabank/badge.svg?branch=master&service=github)](https://coveralls.io/github/picturae/mediabank?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/55ddbeb68d9c4b00180009fd/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55ddbeb68d9c4b00180009fd)
 
 # Picturae webkitchen mediabank client #
 

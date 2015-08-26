@@ -2,12 +2,12 @@
 [![Coverage Status](https://coveralls.io/repos/picturae/mediabank/badge.svg?branch=master&service=github)](https://coveralls.io/github/picturae/mediabank?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/55ddbeb68d9c4b00180009fd/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55ddbeb68d9c4b00180009fd)
 
-# Picturae webkitchen mediabank client #
+# Picturae webkitchen genealogy client #
 
 ## Introduction ##
 
-The mediabank client library is released for third parties who want to integrate
-a serverside fallback for the mediabank component.
+The genealogy client library is released for third parties who want to integrate
+a serverside fallback for the genealogy component.
 This can be used to improve SEO ranking (or) and sharing on social networks as facebook, twitter
 which do not support javascript.
 
@@ -17,7 +17,7 @@ implementation in other languages as Javascript / C# / Java etc.
 ## Installation ##
 
 ```
-composer require picturae/mediabank
+composer require picturae/genealogy
 ```
 
 ## Usage ##
@@ -25,12 +25,13 @@ composer require picturae/mediabank
 See below the code example for the client
 
 ```php
-$client = new \Picturae\Mediabank\Client('api-key');
+$client = new \Picturae\Genealogy\Client('api-key');
 
 // Get a record
-$deed = $client->getMedia($id);
+$media = $client->getMedia($id);
 
 // Get a result list
+// all parameters are optional
 $result = $client->search([
     'q' => 'something', // search query
     'rows' => 100,      // amount of rows to return
@@ -43,15 +44,16 @@ $result = $client->search([
     ],
     'sort' => 'search_s_place asc'   // sort result set (default by relevance)
 ]);
+
 ```
 
 ### Serverside fallback ###
 
-[Full example](examples/serverside-fallback)
+[Full example](examples/serverside-fallback/)
 
 ```php
 // If you do not provide a url the current url is used
-$url = new \Picturae\Mediabank\URL();
+$url = new \Picturae\Genealogy\URL();
 
 // Check if we are on a permalink of a deed
 if ($url->isDeedDetail()) {
@@ -60,7 +62,7 @@ if ($url->isDeedDetail()) {
     $id = $url->getDeedUUID();
 
     // Instantiate the client with your API key
-    $client = new \Picturae\Mediabank\Client('api-key');
+    $client = new \Picturae\Genealogy\Client('api-key');
 
     // Fetch the deed
     $deed = $client->getDeed($id);
@@ -74,12 +76,8 @@ if ($url->isDeedDetail()) {
 
     }
 }
-
 ```
 
 ### Sitemap ###
 
-It's recommended to create a sitemap and submit it to google to improve crawling
-In the examples folder is a demo how you could implement this.
-
-[Full example](examples/sitemap)
+For an example how to implement a sitemap to improve discoverability for search engines look at the [sitemap example](examples/sitemap/)

@@ -7,14 +7,14 @@ namespace Picturae\Mediabank;
  */
 class Client implements ClientInterface
 {
-    
+
     /**
      * Path where the API is located
      *
      * @var string
      */
     private $path = 'mediabank';
-    
+
     /**
      * Client default options
      *
@@ -26,19 +26,19 @@ class Client implements ClientInterface
             'apiKey' => '{apiKey}'
         ]
     ];
-    
+
     /**
      * Mediabank API key
      * @var string
      */
     private $apiKey;
-    
+
     /**
      * HTTP Client
      * @var \GuzzleHttp\Client
      */
     private $client;
-    
+
     /**
      * Instantiate mediabank client.
      * To override the api url for testing purpose you can use the options parameter for the override
@@ -58,7 +58,7 @@ class Client implements ClientInterface
             $this->options = array_merge($this->options, $options);
         }
     }
-    
+
     /**
      * Get API key
      * @return string
@@ -67,7 +67,7 @@ class Client implements ClientInterface
     {
         return $this->apiKey;
     }
-    
+
     /**
      * Get deed by uuid
      *
@@ -78,12 +78,12 @@ class Client implements ClientInterface
     {
         $response = $this->getClient()->get($this->path . '/media/' . $uuid);
         $body = json_decode($response->getBody()->getContents());
-        
+
         if (isset($body->media[0])) {
             return $body->media[0];
         }
     }
-    
+
     /**
      * Get media result set
      * all parameters are optional
@@ -120,7 +120,7 @@ class Client implements ClientInterface
         if ($this->client) {
             return $this->client;
         }
-        
+
         $config = $this->options;
         $config['headers']['apiKey'] = $this->apiKey;
         $this->client = new \GuzzleHttp\Client($config);

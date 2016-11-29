@@ -21,11 +21,9 @@ class Client implements ClientInterface
      * @var array
      */
     private $options = [
-        'base_url' => 'https://webservices.picturae.com',
-        'defaults' => [
-            'headers' => [
-                'apiKey' => '{apiKey}'
-            ]
+        'base_uri' => 'https://webservices.picturae.com',
+        'headers' => [
+            'apiKey' => '{apiKey}'
         ]
     ];
     
@@ -46,7 +44,7 @@ class Client implements ClientInterface
      * To override the api url for testing purpose you can use the options parameter for the override
      * <code>
      * new Client('some-key', [
-     *  'base_url' => 'http://example.com'
+     *  'base_uri' => 'http://example.com'
      * ]);
      * </code>
      *
@@ -124,7 +122,7 @@ class Client implements ClientInterface
         }
         
         $config = $this->options;
-        $config['defaults']['headers']['apiKey'] = $this->apiKey;
+        $config['headers']['apiKey'] = $this->apiKey;
         $this->client = new \GuzzleHttp\Client($config);
         return $this->client;
     }

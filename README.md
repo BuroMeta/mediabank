@@ -11,7 +11,7 @@ a serverside fallback for the mediabank component.
 This can be used to improve SEO ranking (or) and sharing on social networks as facebook, twitter
 which do not support javascript.
 
-Currently there is only a PHP implementation but it can serve as an example for 
+Currently there is only a PHP implementation but it can serve as an example for
 implementation in other languages as Javascript / C# / Java etc.
 
 ## Installation ##
@@ -57,7 +57,7 @@ $url = new \Picturae\Mediabank\URL();
 
 // Check if we are on a permalink
 if ($url->isDetail()) {
-    
+
     // Get the id for the record from the URL
     $id = $url->getUUID();
 
@@ -69,7 +69,7 @@ if ($url->isDetail()) {
 
     // Check if the record is returned
     if (!empty($media) {
-        
+
         // Add your logic for the fallback
         // e.g add opengraph tags for facebook / twitter
         // or provide a html fallback
@@ -81,3 +81,11 @@ if ($url->isDetail()) {
 ### Sitemap ###
 
 For an example how to implement a sitemap to improve discoverability for search engines look at the [sitemap example](examples/sitemap/)
+
+### Refresh ###
+
+Refresh data in the API, updates the image in the API only use sparingly when a record is modified and must be shown on the frontend directly.
+
+```php
+$client->refresh($entity, $id);
+```

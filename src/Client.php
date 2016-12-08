@@ -112,6 +112,26 @@ class Client implements ClientInterface
     }
 
     /**
+     * Refresh data in the API
+     *
+     * @param string $entity
+     * @param string $id
+     * @return \stdClass
+     */
+    public function refresh($entity, $id)
+    {
+        $params = [
+            'query' => [
+                'id' => $id,
+                'entity' => $entity
+            ]
+        ];
+        $response = $this->getClient()->post($this->path . '/media/refresh', $params);
+        $body = json_decode((string)$response->getBody());
+        return $body;
+    }
+
+    /**
      * Get HTTP client
      * @return \GuzzleHttp\Client
      */
